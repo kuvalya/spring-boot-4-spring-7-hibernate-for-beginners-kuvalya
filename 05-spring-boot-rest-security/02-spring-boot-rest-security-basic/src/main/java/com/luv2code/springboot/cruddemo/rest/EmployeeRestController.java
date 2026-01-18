@@ -68,11 +68,12 @@ public class EmployeeRestController {
         return dbEmployee;
     }
 
-    // add mapping for PATCH /employees/{employeeId} - patch employee ... partial update
+    // add mapping for PATCH /employees/{employeeId} - patch employee ... partial
+    // update
 
     @PatchMapping("/employees/{employeeId}")
     public Employee patchEmployee(@PathVariable int employeeId,
-                                  @RequestBody Map<String, Object> patchPayload) {
+            @RequestBody Map<String, Object> patchPayload) {
 
         // Step 1: Retrieve the existing employee from database
         Employee tempEmployee = employeeService.findById(employeeId);
@@ -85,8 +86,7 @@ public class EmployeeRestController {
         // The ID should never change, so reject any attempts to modify it
         if (patchPayload.containsKey("id")) {
             throw new RuntimeException(
-                "Employee id cannot be modified. Remove 'id' from request body."
-            );
+                    "Employee id cannot be modified. Remove 'id' from request body.");
         }
 
         // Step 3: Apply the partial update
@@ -99,18 +99,22 @@ public class EmployeeRestController {
         return dbEmployee;
     }
 
+    // add mapping for DELETE /employees/{employeeId} - delete employee
+
+    @DeleteMapping("/employees/{employeeId}")
+    public String deleteEmployee(@PathVariable int employeeId) {
+
+        Employee tempEmployee = employeeService.findById(employeeId);
+
+        // throw exception if null
+
+        if (tempEmployee == null) {
+            throw new RuntimeException("Employee id not found - " + employeeId);
+        }
+
+        employeeService.deleteById(employeeId);
+
+        return "Deleted employee id - " + employeeId;
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
