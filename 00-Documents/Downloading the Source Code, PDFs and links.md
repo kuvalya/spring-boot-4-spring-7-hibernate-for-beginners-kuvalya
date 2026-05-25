@@ -59,4 +59,6 @@ git clone -c core.longpaths=true https://github.com/darbyluv2code/spring-boot-4-
 
 Course Links
 
-In the course, the slides will display links to other websites. I have compiled a list of the links. You can view the list here:  Course Links
+In the course, the slides will display links to other websites. I have compiled a list of the links. You can view the list here:  
+
+[Course Links](https://github.com/darbyluv2code/spring-boot-4-spring-7-hibernate-for-beginners/blob/main/12-appendix/course-links.md)
